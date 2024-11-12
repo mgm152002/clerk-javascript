@@ -1,4 +1,4 @@
-import { Clerk } from "@clerk/clerk-js";
+import { Clerk } from '@clerk/clerk-js';
 
 // Fetch the Clerk publishable key from environment variables
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -20,8 +20,8 @@ if (clerk.user) {
   // Mount the user button
   clerk.mountUserButton(userButtonDiv);
 
-  // Redirect to localhost:3000
-  window.location.href = "http://localhost:3000";
+  // Redirect to the proxy path, which will internally redirect to localhost:3000
+  window.location.href = "/protected";  // This will be proxied by Vite
 } else {
   // User is not authenticated, render the sign-in page
   document.getElementById("app").innerHTML = `
